@@ -1,9 +1,9 @@
 package com.adu21.spring.boot.global.param.trace.serivce.permission;
 
-import java.util.Collections;
-import java.util.List;
-
 import org.springframework.stereotype.Service;
+
+import java.util.Arrays;
+import java.util.List;
 
 /**
  * @author LukeDu
@@ -11,7 +11,7 @@ import org.springframework.stereotype.Service;
  */
 @Service("SaveUserAuthorizationService")
 public class SaveUserAuthorizationService extends AuthorizationService {
-    private List<Long> authorizedUserIds = Collections.singletonList(1L);
+    private List<Long> authorizedUserIds = Arrays.asList(1L, 2L, 3L, 4L, 5L);
 
     @Override
     public boolean isGranted(Long userId) {

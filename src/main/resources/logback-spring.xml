@@ -4,11 +4,26 @@
     <include resource="org/springframework/boot/logging/logback/defaults.xml" />
 
     <property name="FILE_LOG_PATTERN" value="%d{yyyy-MM-dd HH:mm:ss.SSS} ${LOG_LEVEL_PATTERN:-%5p} [%t] [traceId:%X{traceId}] %-40.40logger{39} : %m%n${LOG_EXCEPTION_CONVERSION_WORD:-%wEx}"/>
-    <property name="CONSOLE_LOG_PATTERN" value="%d{yyyy-MM-dd HH:mm:ss.SSS} ${LOG_LEVEL_PATTERN:-%5p} [%t] [traceId:%X{traceId}] %-40.40logger{39} : %m%n${LOG_EXCEPTION_CONVERSION_WORD:-%wEx}"/>
+<!--    这里加上${CONSOLE_LOG_PATTERN:-“这里是日志内容”}就可以让日志变成spring 默认的颜色，但是格式也是默认的 -->
+<!--    <property name="CONSOLE_LOG_PATTERN" value="${CONSOLE_LOG_PATTERN:-%d{yyyy-MM-dd HH:mm:ss.SSS} ${LOG_LEVEL_PATTERN:-%5p} [%t] [traceId:%X{traceId}] %-40.40logger{39} : %m%n${LOG_EXCEPTION_CONVERSION_WORD:-%wEx}}"/>-->
+<!--    原来作者的日志，不是彩色，但是有自己加的traceId-->
+<!--    <property name="CONSOLE_LOG_PATTERN" value="%d{yyyy-MM-dd HH:mm:ss.SSS} ${LOG_LEVEL_PATTERN:-%5p} [%t] [traceId:%X{traceId}] %-40.40logger{39} : %m%n${LOG_EXCEPTION_CONVERSION_WORD:-%wEx}"/>-->
+<!--    我改了之后，加点颜色的-->
+    <property name="CONSOLE_LOG_PATTERN" value="%d{yyyy-MM-dd HH:mm:ss.SSS} %clr(${LOG_LEVEL_PATTERN:-%5p}) [%15.15t] %clr([%-15.15(traceId:%X{traceId})]){magenta} %clr(%-40.40logger{39}){cyan} : %m%n${LOG_EXCEPTION_CONVERSION_WORD:-%wEx}"/>
+
 
     <property name="APP_NAME" value="global-param-trace" />
     <property name="LOG_PATH" value="${user.home}/${APP_NAME}/logs" />
     <property name="LOG_FILE" value="${LOG_PATH}/application.log" />
+    <!-- 彩色日志格式 -->
+<!--    <property name="CONSOLE_LOG_PATTERN"-->
+<!--              value="${CONSOLE_LOG_PATTERN:-%clr(%d{yyyy-MM-dd HH:mm:ss.SSS}){faint} %clr(${LOG_LEVEL_PATTERN:-%5p}) %clr(${PID:- }){magenta} %clr(-&#45;&#45;){faint} %clr([%15.15t]){faint} %clr(%-40.40logger{39}){cyan} %clr(:){faint} %m%n${LOG_EXCEPTION_CONVERSION_WORD:-%wEx}}"/>-->
+<!--    <conversionRule conversionWord="clr"-->
+<!--                    converterClass="org.springframework.boot.logging.logback.ColorConverter"/>-->
+<!--    <conversionRule conversionWord="wex"-->
+<!--                    converterClass="org.springframework.boot.logging.logback.WhitespaceThrowableProxyConverter"/>-->
+<!--    <conversionRule conversionWord="wEx"-->
+<!--                    converterClass="org.springframework.boot.logging.logback.ExtendedWhitespaceThrowableProxyConverter"/>-->
 
     <appender name="APPLICATION"
               class="ch.qos.logback.core.rolling.RollingFileAppender">

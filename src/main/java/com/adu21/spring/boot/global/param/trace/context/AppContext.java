@@ -1,8 +1,8 @@
 package com.adu21.spring.boot.global.param.trace.context;
 
-import java.io.Serializable;
-
 import com.alibaba.ttl.TransmittableThreadLocal;
+
+import java.io.Serializable;
 
 /**
  * @author LukeDu
@@ -24,6 +24,13 @@ public class AppContext implements Serializable {
             return new AppContext();
         }
     };
+    // todo test ThreadLocal
+//    private static final ThreadLocal<AppContext> LOCAL = new NamedThreadLocal<AppContext>("APP_CONTEXT") {
+//        @Override
+//        protected AppContext initialValue() {
+//            return new AppContext();
+//        }
+//    };
 
     public static AppContext getContext() {
         return LOCAL.get();

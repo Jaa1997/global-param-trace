@@ -33,6 +33,9 @@ public class UserRepository {
         }
     }
 
+    /**
+     * 使用注解将traceId放入MDC的 ThreadLocal中
+     */
     @MdcCompensation
     public Long save(User user) {
         synchronized (users) {

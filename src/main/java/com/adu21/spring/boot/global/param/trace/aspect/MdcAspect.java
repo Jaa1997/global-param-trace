@@ -20,6 +20,11 @@ public class MdcAspect {
     @Pointcut("execution(* com.adu21.spring.boot.global.param.trace.repository..*.*(..))")
     public void service() {}
 
+
+    /**
+     * 只有TTL才能在使用线程池的时候，还能用AppContext.getContext().getTraceId() 获取到 traceId
+     *
+     */
     @Before(value = "service() && @annotation(mdcCompensation)")
     public void doBefore(MdcCompensation mdcCompensation) {
         MDC.put(AppContext.KEY_TRACE_ID, AppContext.getContext().getTraceId());

@@ -1,6 +1,7 @@
 package com.adu21.spring.boot.global.param.trace.context;
 
 import com.alibaba.ttl.TransmittableThreadLocal;
+import org.springframework.core.NamedThreadLocal;
 
 import java.io.Serializable;
 
@@ -24,7 +25,7 @@ public class AppContext implements Serializable {
             return new AppContext();
         }
     };
-    // todo test ThreadLocal
+//    // todo test ThreadLocal
 //    private static final ThreadLocal<AppContext> LOCAL = new NamedThreadLocal<AppContext>("APP_CONTEXT") {
 //        @Override
 //        protected AppContext initialValue() {
